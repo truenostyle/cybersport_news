@@ -1,0 +1,31 @@
+﻿@using ASP_1.Services
+@inject DateService dateService
+@inject TimeService timeService
+@inject TimeService stampService
+@{
+    ViewData["Title"] = "Services";
+}
+<div>
+    <h1 class="display-4"> Сервисы ASP</h1>
+</div>
+<p>
+    Date Service(ctrl): @ViewData["date_service"]<br />
+    Date Service(view): @dateService.GetMoment() <br /><br />
+
+    Time Service(ctrl): @ViewData["time_service"]<br />
+    Time Service(view): @timeService.GetMoment() <br /><br />
+
+    Stamp Service(ctrl): @ViewData["stamp_service"]<br />
+    Stamp Service(view): @stampService.GetMoment() <br /><br />
+
+    Date Hashcode(ctrl): @ViewData["date_hashcode"]<br />
+    Date Hashcode(view): @dateService.GetHashCode()<br /><br />
+
+    Time Hashcode(ctrl): @ViewData["time_hashcode"]<br />
+    Time Hashcode(view): @timeService.GetHashCode()<br /><br />
+
+    Stamp Hashcode(ctrl): @ViewData["stamp_hashcode"]<br />
+    Stamp Hashcode(view): @stampService.GetHashCode()<br /><br />
+
+    MD5("123") = @ViewData["hash_service"]
+</p>

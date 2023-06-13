@@ -1,0 +1,173 @@
+﻿@using ASP_1.Data.Entity;
+@using System.Security.Claims;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersport.ua</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ASP-1.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-5">
+            <div class="container m">
+                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">Cybersport.ua</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            
+
+            @if (Context.User.Identity is not null
+                    && Context.User.Identity.IsAuthenticated)
+            {
+                String userAvatar = Context.User.Claims.First(c => c.Type == ClaimTypes.UserData).Value;
+                if (String.IsNullOrEmpty(userAvatar)) userAvatar = "noAvatar.png";
+
+                String userLogin = Context.User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value;
+                String userId = Context.User.Claims.First(c => c.Type == ClaimTypes.Sid).Value;
+
+                <div>
+                        <img src="~/avatars/@(userAvatar)"
+                             alt="Ava"
+                             id="contextButton"
+                             title="@(userLogin)"
+                             style="max-width: 40px; max-height: 40px; width: 100%; border: 1px solid #2D3641"
+                             class="rounded-circle" />
+  
+
+                        <div id="contextMenu">
+                            <ul class="float-end text-end">
+                                <li>
+                                    <a class="context-menu-a" asp-controller="User" asp-action="Profile" asp-route-id="@userLogin">
+                                        @userLogin
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="context-menu-a" asp-controller="User" asp-action="Logout" title="Выйти" data-user-sid="@userId">
+                                        Выход
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+                
+            }
+            else
+            {
+                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" style="margin-right: 15px" data-bs-target="#exampleModal">
+                    Войти
+                </button>
+            }
+            </div>
+        </nav>
+    </header>
+    <div class="container main-content">
+        <main role="main" class="pb-3 pt-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer text-muted">
+        <div class="container">
+            &copy; 2023 - Cybersport - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-window">
+                <form asp-controller="User" asp-action="AuthUser" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Авторизация</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group mb-4">
+                            <input type="text" id="user-login" name="user-login" class="form-control bg-dark text-white" placeholder="Логин" />
+                        </div>
+                        <div class="form-group mb-4">
+                            <input type="text" id="user-password" name="user-password" class="form-control bg-dark text-white" placeholder="Пароль" />
+                        </div>
+                        <p>Нет аккаунта? <a asp-controller="User" asp-action="Registration">Регистрация</a><br /></p>
+                    </div>
+                    <div class="modal-footer">
+                        <b style="color: red;" id="auth-error"></b>
+                        <button type="button" class="btn btn-primary" id="login-button">Вход</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+       
+       
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginButton = document.getElementById("login-button");
+            if (!loginButton) throw "login-button not found";
+            loginButton.addEventListener("click", loginButtonClick)
+        });
+        function loginButtonClick() {
+            const loginInput = document.getElementById("user-login");
+            if (!loginInput) throw "user-login input not found";
+            const login = loginInput.value;
+
+            const passwordInput = document.getElementById("user-password");
+            if (!passwordInput) throw "user-password input not found";
+            const password = passwordInput.value;
+
+            window.fetch("/User/AuthUser", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `user-login=${login}&user-password=${password}`
+            })
+                .then(r => r.text())
+                .then(t => {
+                    if (t === "OK") {
+                        window.location.reload();
+                    }
+                    else {
+                        document.getElementById("auth-error").innerText = t;                
+                    }
+                    console.log(t);
+                });
+        }
+
+
+        document.addEventListener("click", function (event) {
+            var contextMenu = document.getElementById("contextMenu");
+            var targetElement = event.target; 
+            var isClickInsideMenu = targetElement.closest("#contextMenu");
+
+            if (!isClickInsideMenu) {
+                contextMenu.style.display = "none";
+            }
+        });
+
+        document.getElementById("contextButton").addEventListener("click", function (event) {
+            event.stopPropagation();
+            var contextMenu = document.getElementById("contextMenu");
+            if (contextMenu.style.display === "none") {
+                
+                contextMenu.style.display = "block";
+            } else {
+                contextMenu.style.display = "none";
+            }
+        });
+
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

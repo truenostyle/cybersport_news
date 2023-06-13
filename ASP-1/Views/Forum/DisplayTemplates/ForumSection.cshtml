@@ -1,0 +1,56 @@
+﻿@model ASP_1.Models.Forum.ForumSectionViewModel
+
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-2">
+            <img src="@Model.LogoUrl" class="img-fluid rounded-start" alt="logo">
+        </div>
+        <div class="col-md-10 d-flex flex-column">
+
+            <div class="card-body">
+                <h5 class="card-title">@Model.Title</h5>
+                <p class="card-text">@Model.Description</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+            <div class="card-footer d-flex align-items-center">
+                <div class="mx-3">
+                    @Model.CreatedDtString
+                </div>
+                <img src="@Model.AuthorAvatarUrl" style="max-width:50px; max-height:50px" alt="Avatar" />
+                <div class="mx-3"> 
+                    Автор:<br/>
+                    @Model.AuthorName
+                </div>
+                <span class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover mx-2" href="#!" role="button"
+                      data-rating="@Model.UrlIdString" data-rating-value="1" data-rating-given="@(Model.GivenRating == 1 ? "true" : "false")">
+                    @if(Model.GivenRating == 1)
+                    {
+                        <i class="bi-hand-thumbs-up-fill"></i>
+                    }
+                    else {
+                    <i class="bi-hand-thumbs-up"></i>
+                    }
+                    
+                    @Model.LikesCount
+                </span>
+
+                <span class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover mx-2" href="#!" role="button"
+                      data-rating="@Model.UrlIdString" data-rating-value="-1" data-rating-given="@(Model.GivenRating == -1 ? "true" : "false")">
+                    @if(Model.GivenRating == -1)
+                    {
+                        <i class="bi-hand-thumbs-down-fill"></i>
+                    }
+                    else
+                    {
+                        <i class="bi-hand-thumbs-down"></i>
+                    }
+                    
+                    @Model.DislikeCount
+                </span>
+                <a class="ms-auto" asp-action="Sections" asp-route-id="@Model.UrlIdString">Перейти</a>
+            </div>
+        </div>
+    </div>
+
+    
+</div>

@@ -1,0 +1,111 @@
+﻿@using ASP_1.Models.User
+@model RegistrationModel
+
+@{
+    ViewData["Title"] = "Home Page";
+    var registerValidation = ViewData["registerValidationModel"] as RegisterValidationModel;
+}
+<div>
+    <h1 class="display-4">Регистрация</h1>
+</div>
+
+<div class="container">
+    <form method="post" asp-controller="User" asp-action="Register" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Login">Введите логин</label>
+            <!--
+                class="form-control" дефолтное состояние (registerValidation is null)
+                class="form-control is-valid" положительный результат (registerValidation.LoginMessage is null)
+                class="form-control is-invalid" отрицательный результат (registerValidation.LoginMessage is not null)
+            -->
+            <input type="text" asp-for="Login"
+                   class="bg-dark text-white form-control @(registerValidation is null ? "" : (registerValidation.LoginResult is null ? "is-valid" : "is-invalid") )">
+
+            @if(registerValidation?.LoginResult is not null)
+            {
+                <div class="invalid-feedback">
+                    @registerValidation?.LoginResult
+                </div>
+            }
+
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Введите пароль</label>
+            <input type="password" asp-for="Password" 
+                   class="bg-dark text-white form-control @(registerValidation is null ? "" : (registerValidation.PasswordResult is null ? "is-valid" : "is-invalid") )">
+
+            @if (registerValidation?.PasswordResult is not null)
+            {
+                <div class="invalid-feedback">
+                    @registerValidation?.PasswordResult
+                </div>
+            }
+
+        </div>
+        <div class="form-group">
+            <label asp-for="RepeatPassword">Повторите пароль</label>
+            <input type="password" asp-for="RepeatPassword"
+                   class="bg-dark text-white form-control @(registerValidation is null ? "" : (registerValidation.RepeatPasswordResult is null ? "is-valid" : "is-invalid") )">
+
+            @if (registerValidation?.RepeatPasswordResult is not null)
+            {
+                <div class="invalid-feedback">
+                    @registerValidation?.RepeatPasswordResult
+                </div>
+            }
+        </div>
+        <div class="form-group">
+            <label asp-for="RealName">Имя</label>
+            <input type="text" asp-for="RealName"
+                   class="bg-dark text-white form-control @(registerValidation is null ? "" : (registerValidation.RealNameResult is null ? "is-valid" : "is-invalid") )">
+
+            @if (registerValidation?.RealNameResult is not null)
+            {
+                <div class="invalid-feedback">
+                    @registerValidation?.RealNameResult
+                </div>
+            }
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">E-mail</label>
+            <input type="email" asp-for="Email"
+                   class="bg-dark text-white form-control @(registerValidation is null ? "" : (registerValidation.EmailResult is null ? "is-valid" : "is-invalid") )">
+
+            @if (registerValidation?.EmailResult is not null)
+            {
+                <div class="invalid-feedback">
+                    @registerValidation?.EmailResult
+                </div>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Avatar" class="form-label">Выберите файл для аватарки</label>
+            <input asp-for="Avatar" class="bg-dark text-white form-control" type="file">
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" asp-for="IsAgree"
+                   class="form-check-input @(registerValidation is null ? "" : (registerValidation.IsAgreeResult is null ? "is-valid" : "is-invalid") )">
+            <label class="form-check-label" asp-for="IsAgree">Соглашаюсь</label>
+            @if (registerValidation?.IsAgreeResult is not null)
+            {
+                <div class="invalid-feedback">
+                    @registerValidation?.IsAgreeResult
+                </div>
+            }
+        </div>
+        <button type="submit" class="btn btn-outline-light">Регистрация</button>
+    </form>
+</div>
+
+@if (ViewData["registrationModel"] is RegistrationModel registrationModel)
+{
+    <p>
+        @registrationModel.Login <br>
+        @registrationModel.Password <br>
+        @registrationModel.RepeatPassword <br>
+        @registrationModel.RealName <br>
+        @registrationModel.Email <br>
+    </p>
+}

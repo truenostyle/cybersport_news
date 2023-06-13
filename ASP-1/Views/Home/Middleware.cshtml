@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Middleware";
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col col-6">
+                <button class="btn btn-primary" id="get-button" data-send="GetData">
+                    GET
+                </button>
+                <button class="btn btn-dark" id="post-button" data-send="PostData">
+                    POST
+                </button>
+            </div>
+            <div class="col col-6">
+                <p id="request-result"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const getButton = document.getElementById("get-button");
+        if(getButton) getButton.addEventListener('click', getButtonClick);
+        else console.error("'get-button' not found");
+
+        const postButton = document.getElementById("post-button");
+        if (postButton) postButton.addEventListener('click', postButtonClick);
+        else console.error("'post-button' not found");
+    });
+    function getButtonClick(e) {
+        const data = e.target.getAttribute("data-send");
+        window.fetch("/api/rates?data=" + data) 
+        .then(r => r.json())
+        .then(j => {
+            document.getElementById("request-result").innerText = j.result;
+        });
+    }
+
+    function postButtonClick(e) {
+        const data = e.target.getAttribute("data-send");
+        window.fetch("/api/rates", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({'data': data})
+        })
+            .then(r => r.json())
+            .then(j => {
+                document.getElementById("request-result").innerText = j.result;
+            });
+    }
+</script>

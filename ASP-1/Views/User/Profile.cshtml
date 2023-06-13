@@ -1,0 +1,284 @@
+﻿@using System.Security.Claims;
+@model ASP_1.Models.User.ProfileModel
+@{
+    ViewData["Title"] = "Кабинет";
+}
+<div class="container">
+    <div class="main-body"> 
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card bg-dark">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            @if (Model.Avatar is null)
+                            {
+                                Model.Avatar = "noAvatar.png";
+                            }
+                            <img src ="~/avatars/@(Model.Avatar)" alt="@(Model.Login)" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4 id="secondField">@Model.RealName</h4>
+                                @if(Model.IsModerator)
+                                {
+                                    <p class="text-secondary mb-1">Admin</p>
+                                }
+                                else
+                                {
+                                    <p class="text-secondary mb-1">Member</p>
+                                }
+
+                               
+                                    @if (Model.Description == null)
+                                    {
+                                        <p id="description" class="text-muted font-size-sm" role="button" data-ref-field="description">Write about yourself</p>
+
+
+                                    }
+                                    else
+                                    {
+                                        <p id="description" class="text-muted font-size-sm" role="button" data-ref-field="description">@Model.Description</p>
+                                    }
+                                
+
+                                @*else
+                                {
+                                    
+
+                                    @if (Model.Description == null)
+                                    {
+                                        <p class="text-muted font-size-sm">This user did not write about yourself</p>
+
+
+                                    }
+                                    else
+                                    {
+                                        <p class="text-muted font-size-sm">@Model.Description</p>
+                                    }
+                                }*@
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3 bg-dark">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Full Name</h6>
+                            </div>
+                            <div class="col-sm-8 text-secondary">
+                                @if(Model.IsRealNamePublic || Model.IsPersonal)
+                                {
+                                    <span id="realname" class="p-2">@Model.RealName</span>
+                                }
+                                else
+                                {
+                                    <i>Hidden</i>
+                                }
+                            </div>
+                            <div class="col-sm-1">
+                                @if(Model.IsPersonal)
+                                {
+                                    <img src="~/img/icons/pencil.svg" 
+                                        role="button" data-ref-field="realname" />
+                                }
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">
+                                    Email
+                                    @if (Model.IsPersonal)
+                                    {
+                                        if(Model.IsEmailConfirmed)
+                                        {
+                                            <img class="mb-1 filter-green" src="~/img/icons/person-check.svg" alt="+" />
+                                        }
+                                        else
+                                        {
+                                            <img class="mb-1 filter-red" src="~/img/icons/person-slash.svg" alt="-"
+                                                 role="button" data-bs-toggle="modal" data-bs-target="#confirmModal" />
+                                        }
+                                    }
+                                </h6>
+                            </div>
+                            <div class="col-sm-8 text-secondary">
+                                @if (Model.IsEmailPublic || Model.IsPersonal)
+                                {
+                                    <span id="email" class="p-2">@Model.Email</span>
+                                }
+                                else
+                                {
+                                    <i>Hidden</i>
+                                }
+                            </div>
+                            <div class="col-sm-1">
+                                @if (Model.IsPersonal)
+                                {
+                                    <img src="~/img/icons/pencil.svg"
+                                         role="button" data-ref-field="email" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container card bg-dark h-50">
+                    <div class="row">
+                        <h2 class="row-cols-2 mt-2">Лента активности</h2>
+                        <div class="row-cols-10 text-center mt-2" style="border-top: 1px solid black;">
+                            <h3 class="mt-5">Пусто</h3>
+                            </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Введите код из электронной почты</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                     <span class="input-group-text" id="confirm-addon">Код:</span>
+                     <input type="text" class="form-control" id="confirm-email-input" placeholder="Код Email" aria-describedby="confirm-addon">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" id="resend-email-button">Отправидь код повторно</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary" id="confirm-email-button">Подтвердить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+  
+    document.addEventListener("DOMContentLoaded", () => {
+        for(let pencil of document.querySelectorAll("[data-ref-field]")) {
+            pencil.addEventListener("click", editClick);
+        }  
+        const confirmEmailButton = document.getElementById("confirm-email-button");
+        if(confirmEmailButton) confirmEmailButton.addEventListener("click", confirmEmailButtonClick)
+        else console.error("Element not found");
+
+        const resendEmailButton = document.getElementById("resend-email-button");
+        if (resendEmailButton) resendEmailButton.addEventListener("click", resendEmailButtonClick)
+        else console.error("Element not found");
+    });
+    function editClick(e) {
+        const targetId = e.target.getAttribute("data-ref-field");
+        e.target.oldSrc = e.target.src;
+        e.target.src = "/img/icons/save.svg";
+        const targetElement = document.getElementById(targetId);
+        targetElement.setAttribute("contenteditable", "true");
+        targetElement.focus();
+        
+        targetElement.onblur = editingFinished;
+        targetElement.originalValue = targetElement.textContent;
+
+        e.target.removeEventListener("click", editClick);
+    }
+    function updateSecondField(newValue) {
+        const secondField = document.querySelector("#secondField");
+        secondField.textContent = newValue;
+    }
+    function editingFinished(e) {
+        console.log(e.target);
+  
+        const elem = e.target;
+        if (elem.textContent !== elem.originalValue && confirm("Save changes?")) {
+            if (elem.id = realname)
+            {
+                updateSecondField(elem.innerText);
+            }
+        
+            const data = {
+                field: elem.id,
+                value: elem.innerText
+            }
+            const dataStr = JSON.stringify(data);
+            console.log("Sending " + dataStr);
+            window.fetch("/User/Update", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: dataStr
+            })
+            .then(r=> {
+                if(r.status != 200) {
+                    alert("Respone unsuccessfull")
+                    return;
+                }
+                return r.json();
+            })
+            .then(j => { 
+                console.log(j);
+                if (j.status != 'OK') {
+                    //alert(j.data);
+                }
+                else {
+
+                }
+            });
+        }
+        elem.removeAttribute("contenteditable");
+        delete elem.originalValue;
+        
+    }
+    function editingKeydown(e) {
+        if (e.key == "Enter") {
+            e.target.blur();
+        }
+    }
+    function confirmEmailButtonClick() {
+        const confirmEmailInput = document.getElementById("confirm-email-input");
+        if(!confirmEmailInput) throw "Element not fount: 'confirm-email-input'";
+        const emailCode = confirmEmailInput.value;
+        if(emailCode.length === 0) {
+            alert("Код не может быть пустым");
+            return;
+        }
+        window.fetch("/User/ConfirmEmail", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(emailCode)
+        })
+        .then(r => r.json())
+        .then(j => {
+            console.log(j);
+            if(j.status == "200")
+            {
+                window.location.reload();
+            }
+            else
+            {
+                alert( j.data );
+            }
+        });
+    }
+    function resendEmailButtonClick() {
+        console.log("WORK");
+        window.fetch("/User/ResendConfirmEmail", {
+            method: "PATCH"
+        }).then(r => r.text()).then(t => {
+            console.log(t);
+        })
+    }
+</script>
+

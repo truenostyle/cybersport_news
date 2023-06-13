@@ -1,0 +1,7 @@
+﻿@model ASP_1.Models.Home.PassDataModel
+@{
+    ViewData["Title"] = Model.Header;
+}
+<h1 class="display-4">@Model.Title</h1>
+
+@Html.DisplayFor(m => m.Products, "Products")

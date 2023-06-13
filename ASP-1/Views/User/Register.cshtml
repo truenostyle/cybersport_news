@@ -1,0 +1,22 @@
+﻿@using ASP_1.Models.User
+@model RegistrationModel
+
+@{
+    ViewData["Title"] = "Поздравляю";
+    var registerValidation = ViewData["registerValidationModel"] as RegisterValidationModel;
+}
+<div class="text-center">
+    <h1 class="display-4">Регистрация прошла успешно</h1>
+    <p>
+        Уважаемый <strong>@Model.RealName</strong>!
+        Приветствуем вас на нашем сайте. Для входа вы можете использовать свой логин и пароль
+        @ViewData["savedName"]
+    </p>
+</div>
+
+
+
+@if (Model.Avatar is not null)
+{
+    <img src="/avatars/@(ViewData["savedName"])" alt="avatar" style="max-width:150px"/>
+}
