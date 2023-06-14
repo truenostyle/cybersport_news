@@ -185,7 +185,7 @@
         const targetElement = document.getElementById(targetId);
         targetElement.setAttribute("contenteditable", "true");
         targetElement.focus();
-        
+        console.log(targetElement);
         targetElement.onblur = editingFinished;
         targetElement.originalValue = targetElement.textContent;
 
@@ -196,11 +196,11 @@
         secondField.textContent = newValue;
     }
     function editingFinished(e) {
-        console.log(e.target);
-  
         const elem = e.target;
+        console.log(elem);
+
         if (elem.textContent !== elem.originalValue && confirm("Save changes?")) {
-            if (elem.id = realname)
+            if (elem.id === realname)
             {
                 updateSecondField(elem.innerText);
             }
