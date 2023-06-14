@@ -138,6 +138,10 @@ nav {
     filter: invert(16%) sepia(55%) saturate(6665%) hue-rotate(0deg) brightness(89%) contrast(97%);
 }
 
+.filter-white {
+    filter: invert(100%);
+}
+
 .ui-w-40 {
     max-width: 40px;
 }
