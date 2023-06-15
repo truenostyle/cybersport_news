@@ -16,46 +16,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Pahomch1k\Documents\GitHub\ASP_finalProject\ASP-1
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Forum/DisplayTemplates/ForumPost.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ydW1cRGlzcGxheVRlbXBsYXRlc1xGb3J1bVBvc3QuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Forum/DisplayTemplates/ForumSection.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ydW1cRGlzcGxheVRlbXBsYXRlc1xGb3J1bVNlY3Rpb24uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Forum/DisplayTemplates/ForumTheme.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ydW1cRGlzcGxheVRlbXBsYXRlc1xGb3J1bVRoZW1lLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Forum/DisplayTemplates/ForumTopic.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ydW1cRGlzcGxheVRlbXBsYXRlc1xGb3J1bVRvcGljLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Forum/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ydW1cSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Forum/Sections.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ydW1cU2VjdGlvbnMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Forum/Themes.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ydW1cVGhlbWVzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Forum/Topics.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ydW1cVG9waWNzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/Context.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250ZXh0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/DisplayTemplates.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEaXNwbGF5VGVtcGxhdGVzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/DisplayTemplates/Product.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEaXNwbGF5VGVtcGxhdGVzXFByb2R1Y3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -64,52 +24,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEaXNwbGF5VGVtcGxhdGVzXFByb2R1Y3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/EmailConfirmation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbWFpbENvbmZpcm1hdGlvbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/Intro.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbnRyby5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/Middleware.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNaWRkbGV3YXJlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/PassData.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXNzRGF0YS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/Razor.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSYXpvci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/Scheme.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTY2hlbWUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/Services.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZXJ2aWNlcy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/Sessions.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZXNzaW9ucy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/TagHelpers.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUYWdIZWxwZXJzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Home/Url.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcmwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Pahomch1k/Documents/GitHub/ASP_finalProject/ASP-1/Views/Shared/Error.cshtml]
