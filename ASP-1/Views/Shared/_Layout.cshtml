@@ -133,7 +133,8 @@
                 .then(r => r.text())
                 .then(t => {
                     if (t === "OK") {
-                        window.location.reload();
+                        window.location.href = "/";
+
                     }
                     else {
                         document.getElementById("auth-error").innerText = t;                

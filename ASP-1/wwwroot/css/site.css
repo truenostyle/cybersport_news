@@ -231,3 +231,7 @@ nav {
 .context-menu-a:hover {
     color: white;
 }
+
+.card {
+    background-color: #2D3641;
+}

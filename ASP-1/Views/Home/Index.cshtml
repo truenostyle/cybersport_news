@@ -3,7 +3,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="main-content">
+<div class="main-content mx-5">
     <div class="row mx-3">
         <div class=" block-background col-7 height-main-block main-news">
             <h3>Главные новости</h3>
@@ -11,31 +11,41 @@
         <div class=" block-background col-4 height-main-block ms-auto main-games">
             <h3>Матчи</h3>
         </div>
-        <div class=" block-background col-12 col-md-12 mt-3">
-            <h3>Лента</h3>
+        <div class="block-background col-12 col-md-12 mt-3">
+            <div class="btn-group mx-5 mt-3 mb-3">
+                <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked />
+                <label class="btn btn-secondary" for="option1">РЕКОМЕНДУЕМОЕ</label>
+
+                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off" />
+                <label class="btn btn-secondary" for="option2">СВЕЖЕЕ</label>
+
+                <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" />
+                <label class="btn btn-secondary" for="option3">ОБСУЖДАЕМОЕ</label>
+            </div>
+
+             <a href="#" class="card mx-5 mb-5 px-5 pb-3 pt-3" style="color: white">
+                 <h4>В Dota 2 вышел патч 7.33d</h4>
+                 <img src="https://virtus-img.cdnvideo.ru/images/material-card/plain/8e/8e0f3b6e-e0ff-4015-9e93-926874807072.webp" />
+                 <p class="text-muted">15.06 в 19:44</p>
+             </a>
+
+             <a href="#" class="card mx-5 mb-5 px-5 pb-3 pt-3" style="color: white">
+                <h4>Сооснователь Rockstar Дэн Хаузер открыл новую компанию Absurd Ventures</h4>
+                <img src="https://virtus-img.cdnvideo.ru/images/material-card/plain/bc/bccafa1e-d133-4c04-ae28-090e5752ae68.jpg" />
+                <p class="text-muted">15.06 в 16:31</p>
+             </a>
+
+            <a href="#" class="card mx-5 mb-5 px-5 pb-3 pt-3" style="color: white">
+                <h4>В Valorant появится новый режим «Командный бой насмерть»</h4>
+                <img src="https://virtus-img.cdnvideo.ru/images/material-card/plain/bd/bdb2259d-dfe2-46e7-9530-f3a68b2495e3.png" />
+                <p class="text-muted">15.06 в 14:05</p>
+            </a>
+
+            
         </div>
+
     </div>
 
 
 </div>
-<!--
-<div>
-    <h1 class="display-4">ASP</h1>
-    <p> 
-        <a href="/Home/Intro">Вступ</a><br />
-        <a href="/Home/Scheme">Схема взаимодействия</a><br/>
-        <a href="/Home/Url">Структура Url</a><br/>
-        <a href="/Home/Razor">Основы Razor</a><br />
-        <a href="/Home/PassData">Модели передачи данных</a><br />
-        <a asp-controller="Home" asp-action="DisplayTemplates">Шаблоны отображения данных</a><br />
-        <a asp-action="TagHelpers">Тег-помощник</a><br />
-        <a asp-action="Services">Сервисы (службы)</a><br />
-        <a asp-action="Sessions">Сессии</a><br />
-        <a asp-action="Context">Контекст</a><br />
-        <a asp-action="Middleware">Middleware - ПЗ промежуточного уровня</a><br />
 
-        <a asp-action="EmailConfirmation">Подтверждение email</a><br />
-        <br />
-        <a asp-controller="User">Страница пользователя</a><br />
-   </p>
-</div>-->
