@@ -223,7 +223,6 @@ namespace ASP_1.Controllers
         }
         public IActionResult Profile([FromRoute] String id)
         {
-            //_logger.LogInformation(id);
             User? user = _dataContext.Users.FirstOrDefault(u => u.Login == id);
 
             if (user is not null)

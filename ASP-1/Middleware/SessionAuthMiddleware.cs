@@ -17,7 +17,6 @@ namespace ASP_1.Middleware
             ILogger<SessionAuthMiddleware> logger, DataContext dataContext)
 
         {
-            //logger.LogInformation("SessionAuthMiddleware works");
             String? userId = context.Session.GetString("authUserId");
             if(userId is not null)
             {

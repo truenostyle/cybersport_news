@@ -16,6 +16,7 @@ html {
 body {
     margin-bottom: 60px;
     background-image: url(../img/main_background_image.jpg);
+    background-attachment: fixed;
     text-align: left;
 }
 

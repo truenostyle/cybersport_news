@@ -13,11 +13,6 @@
     <form method="post" asp-controller="User" asp-action="Register" enctype="multipart/form-data">
         <div class="form-group">
             <label asp-for="Login">Введите логин</label>
-            <!--
-                class="form-control" дефолтное состояние (registerValidation is null)
-                class="form-control is-valid" положительный результат (registerValidation.LoginMessage is null)
-                class="form-control is-invalid" отрицательный результат (registerValidation.LoginMessage is not null)
-            -->
             <input type="text" asp-for="Login"
                    class="bg-dark text-white form-control @(registerValidation is null ? "" : (registerValidation.LoginResult is null ? "is-valid" : "is-invalid") )">
 

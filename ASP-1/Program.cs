@@ -25,23 +25,6 @@ builder.Services.AddSingleton<IValidationService, ValidationServiceV1>();
 builder.Services.AddSingleton<IEmailService, GmailService>();
 builder.Services.AddSingleton<ITransliterationService, TransliterationServiceUkr>();
 
-/*
-builder.Services.AddDbContext<DataContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("MsDb")
-        )
-);
-*/
-// variant 1
-/*
-ServerVersion serverVersion = new MySqlServerVersion(new Version(8, 0, 23));
-builder.Services.AddDbContext<DataContext>(options =>
-    options.UseMySql(
-        builder.Configuration.GetConnectionString("MySqlDb"), serverVersion
-        )
-);
-*/
-// variant 2
 
 String? connectionString = builder.Configuration.GetConnectionString("MySqlDb");
 MySqlConnection connection = new MySqlConnection(connectionString);
