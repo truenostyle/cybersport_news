@@ -236,3 +236,12 @@ nav {
 .card {
     background-color: #2D3641;
 }
+
+.main-news-anim {
+    transition-duration: 0.2s;
+    transition-delay: 0.2s;
+}
+
+.main-news-anim:hover {
+    color: orange;
+}
